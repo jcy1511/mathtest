@@ -80,16 +80,10 @@ class Sequence:
         return float(sum)
 
     def info(self):
-        print("an =", self.an)
+        print("일반항 :", self.an)
         if self.type == "등차수열":
             print("종류 : 등차수열")
             print("공차 =", self.cd)
         elif self.type == "등비수열":
             print("종류 : 등비수열")
             print("공비 =", self.cr)
-
-
-a = Sequence()
-a.setDataBySeq([1, 3, 5])
-print(a.a(2))
-a.info()
