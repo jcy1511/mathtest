@@ -3,6 +3,14 @@ import matplotlib.pyplot as plt
 
 
 x = Symbol('x')
+fig, ax = plt.subplots()
+ax.set_ylim(0, 50)
+ax.spines['left'].set_position('center')        # 왼쪽 축을 가운데 위치로 이동
+ax.spines['right'].set_visible(False)          # 오른쪽 축을 보이지 않도록
+ax.spines['top'].set_visible(False)            # 위 축을 보이지 않도록
+ax.spines['bottom'].set_position(('data', 0))   # 아래 축을 데이터 0의 위치로 이동
+plt.xlabel('h')
+plt.ylabel('y')
 
 
 def differential(fx, xp):
@@ -12,24 +20,18 @@ def differential(fx, xp):
     limfx = 0
     h_list = []
     limfx_list = []
-    while (fx.subs(x, xp+h)-fxp)/h != limfx and h > -10:
+    while h > -10:
         limfx = (fx.subs(x, xp+h)-fxp)/h
         attempts += 1
         print('%20.16f' % limfx, f"| h : {'%.2f'%h} | attempts : {attempts}")
         h_list.append(h)
         limfx_list.append(limfx)
-        # h = round(h*0.9, 10)
-        h = h-0.01
-    print("근사치에 도달하였습니다")
+        h = round(h-0.01, 2)
+
     plt.plot(h_list, limfx_list, linestyle='solid',
-             color='red', label=f"(f({xp}+h)-f({xp}))/h")
-    plt.plot([-10, 10], [36, 36], linestyle='solid',
-             color='blue', label="y=36")
+             color='red', label=f'y=f({xp}+h)-f({xp})/h')
     plt.legend()
     plt.show()
-
-    # p1 = plot(fx, line_color='red', xlim=[-6, 6], ylim=[-6, 6], show=False)
-    # p2 = plot(, line_color='red', xlim=[-6, 6], ylim=[-6, 6], show=False)
 
 
 differential(3*x**3, 2)
