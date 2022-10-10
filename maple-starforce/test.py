@@ -1,4 +1,5 @@
-from itertools import *
-whole = [i for i in range(12, 14)]
-everyFailList = list(combinations_with_replacement(whole, 2))
-print(everyFailList)
+for i in [1, 2, 3]:
+    if i == 1 or i == 2:
+        print(i)
+    else:
+        print("afe")

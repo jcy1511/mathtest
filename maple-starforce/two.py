@@ -3,7 +3,7 @@ from itertools import *
 
 whole = [i for i in range(12, 22)]
 
-for n in range(1, 21):
+for n in range(1, 16):
     final_result = 0
     i_result = 0          # i번 실패하고 성공할 확률
 
@@ -16,7 +16,7 @@ for n in range(1, 21):
                 result *= successPrs[success]/100
             for fail in failList:
                 result *= (failPrs[fail]) / 100       # 해당 단계에서 실패할 확률
-                if fail == 15:          # 15성에서는 실패해도 강화 등급 유지
+                if fail == 15 or fail == 20:          # 15성에서는 실패해도 강화 등급 유지
                     result *= (successPrs[fail]/100)
                     # 실패하고 해당 단계에서 다시 성공할 확률
                 else:
